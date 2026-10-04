@@ -1,0 +1,46 @@
+void main() {
+  Map<String, bool> names = {
+    "Muthu": true,
+    "Ravi": true,
+    "Kumar": false,
+    "Arun": false,
+    "Priya": true
+  };
+
+  void showAttendance() {
+    for (var entry in names.entries) {
+      print("Student: ${entry.key}");
+      print("Attendance: ${entry.value}");
+      print("");
+    }
+  }
+
+  
+  showAttendance();
+
+  int present = 0;
+  int absent = 0;
+
+  for (var attendance in names.values) {
+    if (attendance == true) {
+      present++;
+    } else {
+      absent++;
+    }
+  }
+
+  print("Present: $present");
+  print("Absent: $absent");
+
+  int total = names.length;
+  double percentage = (present / total) * 100;
+
+  print("Total Students: $total");
+  print("Attendance Percentage: $percentage");
+
+  if (percentage >= 75) {
+    print("Good Attendance");
+  } else {
+    print("Low Attendance");
+  }
+}
