@@ -1,0 +1,56 @@
+void main(){
+  Map<String, int> marks = {
+  "Muthu": 85,
+  "Ravi": 62,
+  "Kumar": 38,
+  "Priya": 91,
+  "Arun": 47
+};
+  
+  int total=0;
+  for(var mark in marks.values){
+    total=total+mark;
+  }
+  int totalStud=marks.length;
+  marks.forEach((name,mark){
+    showStudentResult(name,mark);
+    calculateAverage(total,totalStud);
+  });
+  print("Total Students: $totalStud");
+  
+  int passStud=0;
+  int failStud=0;
+  
+  for(var mark in marks.values){
+    if(mark>=40){
+      passStud++;
+    }else{
+      failStud++;
+    }
+  }
+  print("Passed Student: $passStud");
+  print("Failed Student: $failStud");
+
+  double average=calculateAverage(total,totalStud);
+  print("Average: $average");
+}
+void showStudentResult(String name, int mark){
+  print("Student: $name");
+  print("Mark: $mark");
+  String result= isPass(mark);
+  print("result: $result");
+  print("");
+}
+String isPass(int mark){
+  if(mark>=40){
+    return "Pass";
+  }else{}
+  return "Fail";
+}
+
+double calculateAverage(int total, int totalStud){
+  return total/totalStud;
+}
+
+
+
