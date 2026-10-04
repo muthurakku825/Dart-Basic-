@@ -1,0 +1,40 @@
+void main(){
+  Map<String,int> marks = {
+  "Muthu": 85,
+  "Ravi": 45,
+  "Kumar": 72,
+  "Arun": 28,
+  "Priya": 88
+};
+  marks.forEach((name,mark){showStudent(name,mark);
+                           isPass(mark);});
+ 
+  int total=0;
+  for(var mark in marks.values){
+    
+    total=total+mark;
+  }
+  print("Total: $total");
+  double average=total/marks.length;
+  print("Average: $average");
+  int highest=0;
+  String name="";
+  for(var entry in marks.entries){
+    if(highest<entry.value){
+      highest=entry.value;
+      name=entry.key;
+    }
+  }
+  print("Highest: $name-$highest");
+}
+void showStudent(String name, int mark){
+  print("$name - $mark - ${isPass(mark)}");
+  
+}
+String isPass(int mark){
+  if(mark>=40){
+    return "pass";
+  }else{
+    return "Fail";
+  }
+}
