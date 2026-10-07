@@ -1,0 +1,77 @@
+void main(){
+  Map<String, int> stock = {
+  "Notebook": 25,
+  "Pen": 8,
+  "Bag": 3,
+  "Bottle": 12,
+  "Pencil": 0
+};
+  
+  stock.forEach((name,quantity){
+    showProductStock(name,quantity);
+  });
+  
+  int noTotal=stock.length;
+  print("Total Products: $noTotal");
+  
+  int total=0;
+  for(var stocks in stock.values){
+    total=total+stocks;
+  }
+  double average=total/noTotal;
+  print("Average Stock Quantity: $average");
+  int stockQuantity=0;
+  for(var stocks in stock.values){
+      stockQuantity=stockQuantity+stocks;
+    }
+    print("Total Stock Quantity:$stockQuantity");
+    print("");
+    
+    int availcount=0;
+    int outcount=0;
+    int lowStock=0;
+    
+    for(var stocks in stock.values){
+      if(stocks==0){
+        outcount++;
+      }else if(stocks<=5){
+        lowStock++;
+      }else{
+        availcount++;
+      }
+    }
+    print("Out of Stock Products:$outcount");
+    print("Low stock Products:$lowStock");
+    print("Available Products:$availcount");
+    print("");
+    
+  int high=0;
+  String highest="";
+   
+  for(var entry in stock.entries){
+    if(high<entry.value){
+      high=entry.value;
+      highest=entry.key;
+    }
+  }
+  print("Highest Stock Product: $highest");
+  print("Highest Quantity: $high");
+  
+}
+String checkStockStatus(int quantity){
+  if(quantity==0){
+    return "Out of Stock";
+  }else if(quantity<=5){
+    return "Low Stock";
+  }else{
+    return "Available";
+  }
+}
+
+void showProductStock(String name, int quantity){
+  String result=checkStockStatus(quantity);
+  print("Product name: $name");
+  print("Product quantity: $quantity");
+  print("Status:$result");
+  print("");
+}
